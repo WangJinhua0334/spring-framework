@@ -1,3 +1,9 @@
+buildscript {
+    repositories {
+		maven { url "https://repo.spring.io/libs-snapshot" }
+	}
+}
+
 plugins {
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE' apply false
 	id 'io.spring.ge.conventions' version '0.0.7'
@@ -277,8 +283,12 @@ configure(allprojects) { project ->
 			cacheChangingModulesFor 0, "seconds"
 		}
 		repositories {
+			//添加阿里云源
+            maven{url "https://maven.aliyun.com/nexus/content/groups/public/"}
+            maven{url "https://maven.aliyun.com/nexus/content/repositories/jcenter"}
 			mavenCentral()
 			maven { url "https://repo.spring.io/libs-spring-framework-build" }
+            maven { url "https://repo.spring.io/plugins-release" }
 		}
 	}
 	configurations.all {
